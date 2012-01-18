@@ -1,0 +1,38 @@
+This script is a quick hack to extract the rtmp url from a svtplay stream.
+
+If you got here via a search engine you are probably lost and
+should instead go to:
+
+ http://svtget.se/
+
+Svtget has a more potent script. This one only extracts the highest
+bitrate (2400 kbps) stream and, if succesful, prints out a command
+that hypothetically could be used to download that stream.
+
+I wrote this because the svtget bash script didn't work on mac osx.
+Probably because osx uses another version of sed (and bash). For
+portability's sake this script uses a more universal sed syntax
+that works out on both mac osx, GNU/Linux and maybe the local gym too.
+It is also written in the ancient bourne shell syntax in order to
+be compatible with all (if not more) *nix dialects.
+
+I do not encourage anyone to download streams from svtplay. But if
+you decide to go wild and crazy and do it anyway it might be good
+to read The Disclaimer Below.
+
+
+The Disclaimer Below
+
+It is legal to download streams from svtplay for private use as
+long as you pay the Radiotjänst TV-avgift. But you may NOT distribute
+these inspelningar to someone who doesn't pay the Radiotjänst TV-avgift.
+If you do you may be infringing brottskod 5101 (which just happens to
+be worse than terrorism).
+
+
+All Rights Reversed - No Rights Reserved.
+
+
+Pungenday, the 18th day of Chaos in the YOLD 3178
+
+Albert Veli
