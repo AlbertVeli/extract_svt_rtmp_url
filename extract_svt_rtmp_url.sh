@@ -35,9 +35,12 @@
 # All Rights Reversed - No Rights Reserved.
 #
 #
-# Written on Pungenday, the 18th day of Chaos in the YOLD 3178
+# - Pungenday, the 18th day of Chaos in the YOLD 3178 (disc)
+# - January 18 2012 (greg)
+# - Nonidi, 29 Nivôse CCXX (frc)
+# - January 5 2012 (jul)
 #
-# by Albert Veli
+# Albert Veli
 #
 #
 # After this boring introduction, over to something more interesting...
@@ -50,10 +53,19 @@ if test -z "${1}"; then
 	exit 1
 fi
 
-# Get page html code (with curl, which must be installed prior)
-HTML=`curl -s "${1}"`
+# Get page html code.
+if test -x "`which curl`"; then
+	HTML=`curl -s "${1}"`
+else
+	if test -x "`which wget`"; then
+		HTML=`wget -qO- "${1}"`
+	else
+		echo " --> Error: either curl or wget must be installed"
+		exit 1
+	fi
+fi
 
-# Only parse out the highet bitrate (2400 kbps) url
+# Only parse the highest bitrate (2400 kbps) url
 tcUrl=`echo "${HTML}" | sed -n 's/.*url:\(rtmp[e]*:[^:]*\):2400.*/\1/gp' | sed 's/,bitrate//' | uniq`
 if test -z "${tcUrl}"; then
 	# Hypothetical user did something wrong (or maybe svtplay changed)
@@ -72,7 +84,7 @@ fi
 swfUrl=`echo "${HTML}" | sed -n 's/.*x-shockwave-flash\" data=\"\(\/flash\/svtplayer-[0-9]*\.[0-9]*\.swf\).*/http:\/\/svtplay.se\1/p'`
 if test -z "${swfUrl}"; then
 	# Huh? How could tcUrl work and not this?
-	echo "Failed to extract swf player url"
+	echo " --> Error: failed to extract swf player url"
 	exit 1
 fi
 
@@ -86,7 +98,9 @@ fi
 
 # Echo the dangerous command - that hypothetically, in the near
 # future, could be used to infringe brottskod 5101 - to the console.
+echo ""
 echo "rtmpdump -r \"${tcUrl}\" --swfVfy=\"${swfUrl}\" -o \"${output}\""
+echo ""
 
 # Epic success
 exit 0
