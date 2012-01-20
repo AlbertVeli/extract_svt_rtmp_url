@@ -3,13 +3,15 @@
 # This script is a quick hack to extract the rtmp url from a svtplay stream.
 #
 # If you got here via a search engine you are probably lost and
-# should instead go to:
+# should instead use one of these:
 #
-#  http://svtget.se/
+#  http://svtget.se/ (https://github.com/mmn/svtget)
+#  http://pirateplay.se/ (https://github.com/jackuess/pirateplay)
 #
-# Svtget has a more potent script. This one only extracts the highest
-# bitrate (2400 kbps) stream and, if succesful, prints out a command
-# that hypothetically could be used to download that stream.
+# Svtget has a more potent script and pirateplay supports several sites.
+# This one only extracts the highest bitrate (2400 kbps) stream and, if
+# succesful, prints out a command that hypothetically could be used to
+# download that stream.
 #
 # I wrote this because the svtget bash script didn't work on mac osx.
 # Probably because osx uses another version of sed (and bash). For
@@ -19,16 +21,16 @@
 # be compatible with all (if not more) *nix dialects.
 #
 # I do not encourage anyone to download streams from svtplay. But if
-# you decide to go wild and crazy and do it anyway it might be good
-# to read The Disclaimer Below.
+# you decide to go wild and crazy and do it anyway it might be a good
+# idea to read The Disclaimer Below first.
 #
 #
 # The Disclaimer Below
 #
 # It is legal to download streams from svtplay for private use as
-# long as you pay the Radiotjänst TV-avgift. But you may NOT distribute
+# long as you pay the Radiotjänst TV-avgift. But you may NOT re-distribute
 # these inspelningar to someone who doesn't pay the Radiotjänst TV-avgift.
-# If you do you may be violating brottskod 5101 (which just happens to
+# If you do you may be infringing brottskod 5101 (which just happens to
 # be worse than terrorism).
 #
 #
